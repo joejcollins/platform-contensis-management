@@ -41,5 +41,6 @@
         "editor.codeActionsOnSave": {
             "source.organizeImports.ruff": "explicit",
         }
-    }
+    },
+    "git.autofetch": true
 }
