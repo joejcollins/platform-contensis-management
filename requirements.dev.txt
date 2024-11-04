@@ -121,7 +121,7 @@ requests==2.32.3
     #   responses
 responses==0.25.3
     # via contensis_management (pyproject.toml)
-ruff==0.7.1
+ruff==0.7.2
     # via contensis_management (pyproject.toml)
 six==1.16.0
     # via
