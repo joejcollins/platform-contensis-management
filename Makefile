@@ -16,8 +16,8 @@ lint:  # Lint the code with ruff and mypy.
 
 lock:  # Create the lock file and requirements file.
 	rm -f requirements.*
-	.venv/bin/python -m piptools compile --output-file=requirements.txt
-	.venv/bin/python -m piptools compile --extra=dev --output-file=requirements.dev.txt
+	.venv/bin/python -m uv pip compile --output-file requirements.txt pyproject.toml
+	.venv/bin/python -m uv pip compile --extra dev --output-file requirements.dev.txt pyproject.toml
 
 report:  # Report the python version and pip list.
 	.venv/bin/python --version
@@ -27,15 +27,15 @@ test:  # Run tests.
 	.venv/bin/python -m pytest ./tests --verbose --color=yes
 
 venv:  # Create an empty virtual environment (enough to create the requirements files).
-	-python3 -m venv .venv  # Skip failure that happens in Github Action due to permissions.
-	.venv/bin/python -m pip install --upgrade pip setuptools pip-tools
+	-python -m venv .venv  # Skip failure that happens in Github Action due to permissions.
+	.venv/bin/python -m pip install --upgrade pip uv
 
 venv-dev:  # Create the development virtual environment.
 	$(MAKE) venv
-	.venv/bin/python -m pip install -r requirements.dev.txt
-	.venv/bin/python -m pip install --editable .
+	.venv/bin/python -m uv pip install -r requirements.dev.txt
+	.venv/bin/python -m uv pip install --editable .
 
 venv-prod:  # Create the production virtual environment.
 	$(MAKE) venv
-	.venv/bin/python -m pip install -r requirements.txt
-	.venv/bin/python -m pip install --editable .
+	.venv/bin/python -m uv pip install -r requirements.txt
+	.venv/bin/python -m uv pip install --editable .
