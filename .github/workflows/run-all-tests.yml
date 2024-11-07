@@ -16,7 +16,7 @@ jobs:
           submodules: false
           clean: true
 
-      - name: Symlink to virtual environment in container image
+      - name: Create virtual environment in container image
         run: |
           make venv-dev
 
