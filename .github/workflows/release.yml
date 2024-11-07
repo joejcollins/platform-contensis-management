@@ -14,8 +14,10 @@ jobs:
     environment:
       name: pypi
       url: https://pypi.org/p/contensis-management
+
     permissions:
       id-token: write
+
     steps:
       - name: Checkout the repo.
         uses: actions/checkout@v4
@@ -32,3 +34,5 @@ jobs:
 
       - name: Publish package distributions to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          repository-url: https://test.pypi.org/legacy/
